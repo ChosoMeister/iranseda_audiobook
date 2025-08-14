@@ -14,8 +14,14 @@ filters:
   min_mp3_size_bytes: 0
   require_full_mp3: false
 
-parallel:
-  workers: 1
+pipeline:
+  max_passes: 3
+  delay_first_min: 0.1
+  delay_first_max: 0.3
+  delay_retry_min: 1.0
+  delay_retry_max: 2.0
+  workers_first: 1
+  workers_retry: 1
 
 logging:
   level: info
