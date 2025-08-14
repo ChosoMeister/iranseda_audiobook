@@ -5,7 +5,7 @@ install:
 	python -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt
 
 run:
-	python -m iranseda.cli run --config configs/example.yaml
+	python -m iranseda.cli run --config configs/config.yaml
 
 test:
 	pytest -q
