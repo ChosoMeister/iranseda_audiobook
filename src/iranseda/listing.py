@@ -23,6 +23,8 @@ def _get(url: str) -> requests.Response:
     r = requests.get(url, headers=HEADERS, timeout=25)
     if not r.encoding or r.encoding.lower() in ("iso-8859-1", "ascii"):
         r.encoding = r.apparent_encoding or "utf-8"
+    if r.status_code in (429, 403, 408):
+        raise RuntimeError(f"retryable status {r.status_code}")
     if r.status_code >= 500:
         raise RuntimeError(f"server error {r.status_code}")
     return r
