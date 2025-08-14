@@ -123,8 +123,7 @@ with ThreadPoolExecutor(max_workers=max(workers,1)) as ex:
             success += 1
             merged[int(parsed["AudioBook_ID"])] = parsed
             io.atomic_write_csv(books_csv, list(merged.values()), details.CSV_FIELDS)
-            jsonl_f.write(json.dumps(parsed, ensure_ascii=False) + "
-")
+            jsonl_f.write(json.dumps(parsed, ensure_ascii=False) + "\n")
             jsonl_f.flush()
             logging.info(f"✓ {parsed.get('AudioBook_ID')}  «{(parsed.get('Book_Title') or '')[:40]}»")
         elif status == "skipped":
