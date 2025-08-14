@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "iranseda-scraper"
+version = "0.1.0"
+description = "Clean crawler + enricher for IranSeda audiobooks (IDs + details + MP3 via API)"
+authors = [{name="Orchid Pharmed"}]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "requests",
+  "beautifulsoup4",
+  "pandas",
+  "pyyaml",
+]
+
+[project.scripts]
+iranseda = "iranseda.cli:main"

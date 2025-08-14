@@ -1,0 +1,26 @@
+start_url_template: "https://book.iranseda.ir/taglist/?VALID=TRUE&t=%D8%A7%D8%AF%D8%A8%DB%8C%D8%A7%D8%AA%20%D8%BA%D8%B1%D8%A8(%D8%BA%DB%8C%D8%B1%D8%A7%DB%8C%D8%B1%D8%A7%D9%86%DB%8C)&pn={page}"
+pages: 81
+
+outputs:
+  books_csv: "output/audiobooks.csv"
+  errors_csv: "output/errors.csv"
+  jsonl: "output/audiobooks.jsonl"
+
+throttle:
+  min: 0.1
+  max: 0.3
+
+filters:
+  min_mp3_size_bytes: 0
+  require_full_mp3: false
+
+parallel:
+  workers: 2
+
+logging:
+  level: info
+  file: null
+
+cache:
+  enabled: true
+  dir: ".cache/details"

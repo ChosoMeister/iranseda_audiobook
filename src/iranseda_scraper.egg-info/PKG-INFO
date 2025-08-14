@@ -1,0 +1,42 @@
+Metadata-Version: 2.4
+Name: iranseda-scraper
+Version: 0.1.0
+Summary: Clean crawler + enricher for IranSeda audiobooks (IDs + details + MP3 via API)
+Author: Orchid Pharmed
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: requests
+Requires-Dist: beautifulsoup4
+Requires-Dist: pandas
+Requires-Dist: pyyaml
+
+# iranseda-scraper (clean structure)
+
+Crawler + enricher for **book.iranseda.ir** audiobooks:
+- Crawl listing pages (page 1..N) in-memory to collect **AudioBookID** + Details URL, then immediately parse Details page (metadata) + build Player link + fetch **MP3** links from official API (no intermediate CSV).
+
+## Quickstart
+
+```bash
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+### Run with YAML config
+```bash
+python -m iranseda.cli run --config configs/example.yaml
+```
+
+### Optional (legacy):
+اگر خواستی مرحله‌ای کار کنی، زیر دستورهای `crawl` و `enrich` هنوز هستند، اما در حالت پیش‌فرض `run` بدون فایل میانی کار می‌کند.
+
+## Output columns (tail)
+```
+..., Cover_Image_URL, Source_URL, Player_Link, FullBook_MP3_URL, All_MP3s_Found
+```
+
+## Notes
+- Writes CSV with **utf-8-sig** (great for Persian in Excel)
+- Atomic CSV rewrite per row (safe resume)
+- Random throttle between requests (configurable)
