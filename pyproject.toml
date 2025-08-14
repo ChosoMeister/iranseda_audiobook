@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "iranseda-scraper"
 version = "0.1.0"
 description = "Clean crawler + enricher for IranSeda audiobooks (IDs + details + MP3 via API)"
-authors = [{name="Orchid Pharmed"}]
+authors = [{name="Mustafa"}]
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
