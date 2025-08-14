@@ -170,8 +170,8 @@ for sweep in range(1, MAX_SWEEPS+1):
             merged[int(parsed["AudioBook_ID"])] = parsed
             io.atomic_write_csv(books_csv, list(merged.values()), details.CSV_FIELDS)
             with jsonl_path.open("a", encoding="utf-8") as jf:
-                jf.write(json.dumps(parsed, ensure_ascii=False) + "
-")
+                jf.write(json.dumps(parsed, ensure_ascii=False) + "\n"
+
             logging.info(f"[sweep {sweep}] ✓ {parsed.get('AudioBook_ID')}")
         else:
             new_errors.append({"AudioBook_ID": audio_id, "URL": parsed.get('Source_URL',''), "Error": msg})
